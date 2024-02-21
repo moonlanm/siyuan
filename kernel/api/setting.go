@@ -545,10 +545,12 @@ func getCloudUser(c *gin.Context) {
 	}
 	model.RefreshUser(token)
 	u := model.Conf.GetUser()
-	u.UserSiYuanSubscriptionPlan = 0
-	u.UserSiYuanSubscriptionStatus = 0
-	u.UserSiYuanSubscriptionType = 0
-	u.UserSiYuanOneTimePayStatus = 1
+	if nil != u {
+		u.UserSiYuanSubscriptionPlan = 0
+		u.UserSiYuanSubscriptionStatus = 0
+		u.UserSiYuanSubscriptionType = 0
+		u.UserSiYuanOneTimePayStatus = 1
+	}
 	ret.Data = u
 }
 
